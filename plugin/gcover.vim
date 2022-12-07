@@ -83,4 +83,4 @@ function s:showGcov()
 	endfor
 endfunction
 
-command! -bang -nargs=0 GcovLoad call s:showGcov()
+command! -bang -nargs=0 GcovShow call s:showGcov()
