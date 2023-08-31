@@ -13,11 +13,11 @@ if !hlexists('GcovLineUncovered')
 endif
 
 if !exists("g:gcov_path")
-	let g:gcov_path = '/home/huaweil/build/cutensornet/projectbuild'
+    throw "please provide gcov_path"
 endif
 
 if !exists("g:project_path")
-	let g:project_path = '/home/huaweil/project/cuquantum-cutensornet/cuquantum/tensor_network'
+    throw "please provide project_path"
 endif
 
 function s:clearGcov()
