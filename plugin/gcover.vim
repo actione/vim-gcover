@@ -48,7 +48,10 @@ function s:showGcov()
 	" endif
 
 	for gcda_file in l:gcda_files
-		silent exe '!(cd ' . l:tmp_gcov_dir . '; gcov ' . gcda_file . ') > /dev/null'
+        # bash
+        " silent exe '!(cd ' . l:tmp_gcov_dir . '; gcov ' . gcda_file . ') > /dev/null'
+        " normal
+        silent exe 'cd ' . l:tmp_gcov_dir | silent exe '!gcov ' . gcda_file
 	endfor
 
 	" parse gcov file to apply source file
