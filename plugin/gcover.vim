@@ -43,14 +43,8 @@ function s:showGcov()
 		call delete(l:tmp_gcov_dir . '/' . l:curr_file_name . ".gcov")
 	endif
 	call mkdir(l:tmp_gcov_dir, "p", 0700)
-	" if filereadable(l:tmp_gcov_dir . expand('%:t') . ".gcov")
-	" 	delete(l:tmp_gcov_dir . expand('%:t') . ".gcov")
-	" endif
 
 	for gcda_file in l:gcda_files
-        # bash
-        " silent exe '!(cd ' . l:tmp_gcov_dir . '; gcov ' . gcda_file . ') > /dev/null'
-        " normal
         silent exe 'cd ' . l:tmp_gcov_dir | silent exe '!gcov ' . gcda_file
 	endfor
 
@@ -64,14 +58,6 @@ function s:showGcov()
 
 	for file in l:gcov_files
 
-		" " check if this file is in source file path set
-		" let l:file_name = split(file, '/')[-1]
-		" let l:file_name_tmp = l:file_name[0:-6] " file_name need be identiy in the project
-		" let l:target_source_files = split(globpath(g:project_path, "**/" . l:file_name_tmp), '\n')
-		" if len(target_source_files) != 1
-		" 	continue
-		" endif
-		" let l:target_source_file = l:target_source_files[0]
 
 		try
 			let l:gcov_file = readfile(file)
